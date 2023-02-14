@@ -16,11 +16,9 @@ class EmployeeTest {
 
         List<String> allTasks = employee.getAllTasks();
         allTasks.stream().forEach(System.out::println);
-        allTasks.clear();
-
+        //allTasks.clear();
+        employee.addTask("Clean toilet");
         System.out.println("again");
-        employee.getAllTasks().stream().forEach(System.out::println);
-
-
+        allTasks.stream().forEach(System.out::println);
     }
 }

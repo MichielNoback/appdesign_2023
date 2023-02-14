@@ -1,9 +1,6 @@
 package nl.bioinf.lesson1;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Employee {
     private List<String> tasks = new LinkedList<>();
@@ -26,7 +23,10 @@ public class Employee {
     }
 
     public List<String> getAllTasks() {
-        return this.tasks;
+        //dynamische unmodifiable view
+//        return Collections.unmodifiableList(this.tasks);
+        //statische modifiable view
+        return new ArrayList<>(this.tasks);
     }
 
     @Override
