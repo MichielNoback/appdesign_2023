@@ -7,6 +7,7 @@ public record Address(String street, int number, String zipCode) {
     public int number() {
         return Math.abs(number);
     }
+
     public Address setZipCode(String newZip) {
         return new Address(street, number, newZip);
     }

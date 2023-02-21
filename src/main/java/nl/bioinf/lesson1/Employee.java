@@ -8,9 +8,9 @@ public class Employee {
     private int id;
     private String name;
     private double salary;
-    private Address2 address;
+    private Address address;
 
-    public Employee(int id, String name, double salary, Address2 address) {
+    public Employee(int id, String name, double salary, Address address) {
         this.id = id;
         this.name = name;
         this.salary = salary;
@@ -27,6 +27,10 @@ public class Employee {
 //        return Collections.unmodifiableList(this.tasks);
         //statische modifiable view
         return new ArrayList<>(this.tasks);
+    }
+
+    void secretMethod() {
+
     }
 
     @Override
