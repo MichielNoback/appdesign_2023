@@ -5,9 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -81,5 +80,37 @@ public class SimpleStreams {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void testIdentityCollection() {
+        String[] words =
+                {"arg", "bah", "yeah", "howwie", "aw", "whoa", "yuck"};
+        Map<Integer, Long> collect = Arrays.stream(words)
+                .map(String::length)
+                .collect(Collectors.groupingBy(
+                        x -> x, Collectors.counting())
+                );
+        // Function.identity() == x -> x
+        System.out.println(collect);
+    }
+
+
+
+    @Test
+    void testGenerator(){
+        Random r= new Random();
+        Stream
+                .generate(Math::random) //
+                .peek(x -> System.out.println("X+peek=" + x))
+                .limit(10)
+                .forEach(x -> System.out.println("X=" + x));
+    }
+
+    @Test
+    void testRandom() {
+        System.out.println(Math.random());
+
+        System.out.println(new Random().nextDouble());
     }
 }
